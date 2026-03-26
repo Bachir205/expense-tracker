@@ -1,26 +1,20 @@
-// middleware/authenticate.js
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-const protect = (req, res, next) => {
-  // 1. Extract token from header
-  const authHeader = req.headers['authorization'];
+const protect = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'No token provided' });
+    return res.status(401).json({ message: 'Not authorized, no token' });
   }
 
-  const token = authHeader.split(' ')[1]; // "Bearer <token>"
-
-  // 2. Verify signature and expiration
   try {
+    const token = authHeader.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // attach payload to request
+    req.user = await User.findById(decoded.id).select('-password');
+    if (!req.user) return res.status(401).json({ message: 'User not found' });
     next();
-  } catch (error) {
-    if (error.name === 'TokenExpiredError') {
-      return res.status(401).json({ message: 'Token expired, please log in again' });
-    }
-    return res.status(403).json({ message: 'Invalid token' });
+  } catch (err) {
+    return res.status(401).json({ message: 'Token invalid or expired' });
   }
 };
 
