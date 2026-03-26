@@ -1,8 +1,52 @@
-.expense-form { display: flex; flex-direction: column; gap: 0.875rem; }
-.form-row { display: flex; gap: 0.875rem; }
-.form-row .field { flex: 1; }
-.form-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 0.25rem; padding-top: 0.875rem; border-top: 1px solid var(--border); }
-.type-toggle { display: flex; gap: 6px; }
-.type-btn { flex: 1; padding: 0.5rem; background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius); color: var(--text2); font-size: 13px; cursor: pointer; transition: all var(--transition); }
-.type-btn.active-expense { background: rgba(255,95,126,0.12); border-color: rgba(255,95,126,0.3); color: var(--red); }
-.type-btn.active-income  { background: rgba(34,211,160,0.12); border-color: rgba(34,211,160,0.3); color: var(--green); }
+.expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 0.875rem;
+}
+
+.form-row .field {
+    flex: 1;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 0.25rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--border);
+}
+
+.type-toggle {
+    display: flex;
+    gap: 6px;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 0.5rem;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--radius);
+    color: var(--text2);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.type-btn.active-expense {
+    background: rgba(255, 95, 126, 0.12);
+    border-color: rgba(255, 95, 126, 0.3);
+    color: var(--red);
+}
+
+.type-btn.active-income {
+    background: rgba(34, 211, 160, 0.12);
+    border-color: rgba(34, 211, 160, 0.3);
+    color: var(--green);
+}
