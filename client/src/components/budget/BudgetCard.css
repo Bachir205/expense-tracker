@@ -1,0 +1,9 @@
+.budget-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+.budget-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.875rem; }
+.budget-cat { display: flex; align-items: center; gap: 8px; }
+.budget-emoji { font-size: 20px; }
+.budget-cat-name { font-size: 14px; font-weight: 600; }
+.budget-amounts { margin-bottom: 8px; }
+.budget-spent { font-size: 1.25rem; font-weight: 600; }
+.budget-limit { font-size: 13px; color: var(--text3); }
+.budget-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }

@@ -1,0 +1,13 @@
+.alert-banner { display: flex; align-items: center; gap: 10px; background: rgba(255,179,71,0.08); border: 1px solid rgba(255,179,71,0.2); border-radius: var(--radius); padding: 0.75rem 1rem; margin-bottom: 1.5rem; font-size: 13.5px; color: var(--amber); }
+.alert-link { margin-left: auto; color: var(--amber); text-decoration: none; font-weight: 500; font-size: 13px; }
+.dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.recent-item { display: flex; align-items: center; gap: 10px; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+.recent-item:last-child { border-bottom: none; }
+.recent-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.recent-info { flex: 1; min-width: 0; }
+.recent-title { font-size: 13.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.recent-date  { font-size: 11.5px; color: var(--text3); }
+.recent-amount { font-size: 13.5px; font-weight: 600; font-family: var(--mono); flex-shrink: 0; }
+.budget-mini { margin-bottom: 0.875rem; }
+.budget-mini:last-child { margin-bottom: 0; }
+.budget-mini-top { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
