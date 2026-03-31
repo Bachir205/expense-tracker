@@ -13,9 +13,16 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (res) => res,
   (err) => {
-    if (err.response?.status === 401) {
-      localStorage.removeItem('token');
-      window.location.href = '/login';
+    if (err.response) {
+      // Server responded with error status
+      if (err.response.status === 401) {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      }
+    } else if (err.request) {
+      // Network error - no response received
+      console.error('Network error: Backend may be unreachable');
+      // Could trigger a toast notification here
     }
     return Promise.reject(err);
   }

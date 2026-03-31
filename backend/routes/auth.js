@@ -26,6 +26,7 @@ router.post('/register', [
     const token = signToken(user._id);
     res.status(201).json({ token, user: { _id: user._id, name: user.name, email: user.email, currency: user.currency } });
   } catch (err) {
+    console.error('Registration error:', err.message);
     res.status(500).json({ message: err.message });
   }
 });
@@ -41,6 +42,7 @@ router.post('/login', async (req, res) => {
     const token = signToken(user._id);
     res.json({ token, user: { _id: user._id, name: user.name, email: user.email, currency: user.currency } });
   } catch (err) {
+    console.error('Login error:', err.message);
     res.status(500).json({ message: err.message });
   }
 });
