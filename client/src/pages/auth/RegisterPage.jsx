@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import './Auth.css';
 
 export default function RegisterPage() {
-  const [form,    setForm]    = useState({ name: '', email: '', password: '', currency: 'USD' });
+  const [form,    setForm]    = useState({ name: '', email: '', password: '', currency: import.meta.env.VITE_DEFAULT_CURRENCY || 'USD' });
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
   const navigate     = useNavigate();
