@@ -25,3 +25,9 @@
     border-radius: 50%;
     flex-shrink: 0;
 }
+
+@media (max-width: 900px) {
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -23,13 +23,38 @@ export default function BudgetsPage() {
 
   useEffect(() => { fetchBudgets(month, year); }, [month, year]);
 
-  const openAdd  = () => { setForm({ category: 'Food', limit: '', alertAt: 80 }); setModal('add'); };
-  const openEdit = b  => { setForm({ ...b }); setModal(b); };
+  const usedCategories      = budgets.map(b => b.category);
+  const availableCategories = CATEGORIES.filter(c => !usedCategories.includes(c.value));
+
+  const openAdd = () => {
+    if (availableCategories.length === 0) {
+      toast.error('All categories already have a budget this month');
+      return;
+    }
+    // Default to the first available category, not hardcoded 'Food'
+    setForm({ category: availableCategories[0].value, limit: '', alertAt: 80 });
+    setModal('add');
+  };
+
+  const openEdit = b => {
+    setForm({ category: b.category, limit: b.limit, alertAt: b.alertAt });
+    setModal(b);
+  };
 
   const handleSave = async () => {
+    if (!form.limit || parseFloat(form.limit) <= 0) {
+      toast.error('Please enter a valid limit');
+      return;
+    }
     setSaving(true);
     try {
-      const payload = { ...form, limit: parseFloat(form.limit), alertAt: Number(form.alertAt), month, year };
+      const payload = {
+        category: form.category,
+        limit:    parseFloat(form.limit),
+        alertAt:  Number(form.alertAt),
+        month,
+        year,
+      };
       if (modal === 'add') {
         await api.post('/budgets', payload);
         toast.success('Budget created');
@@ -55,32 +80,33 @@ export default function BudgetsPage() {
     } catch { toast.error('Failed to delete'); }
   };
 
-  const usedCategories      = budgets.map(b => b.category);
-  const availableCategories = CATEGORIES.filter(c => !usedCategories.includes(c.value));
-
   return (
     <div className="budgets-page fade-in">
       <div className="page-header">
         <div>
           <h1 className="page-title">Budgets</h1>
-          <p className="page-sub">{budgets.length} budgets set this month</p>
+          <p className="page-sub">{budgets.length} of {CATEGORIES.length} categories set</p>
         </div>
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+        <div className="page-header-actions">
           <MonthPicker month={month} year={year} onChange={(m, y) => { setMonth(m); setYear(y); }} />
-          <button className="btn btn-primary" onClick={openAdd}>+ New budget</button>
+          <button className="btn btn-primary" onClick={openAdd}
+            disabled={availableCategories.length === 0}>
+            + New budget
+          </button>
         </div>
       </div>
 
       {budgets.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '4rem 0' }}>
-          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>◎</div>
-          <p style={{ color: 'var(--text2)' }}>No budgets yet for this month</p>
-          <button className="btn btn-primary" style={{ marginTop: '1rem' }} onClick={openAdd}>Set your first budget</button>
+        <div className="empty-full">
+          <div className="empty-icon">◎</div>
+          <p>No budgets yet for this month</p>
+          <button className="btn btn-primary" onClick={openAdd}>Set your first budget</button>
         </div>
       ) : (
         <div className="budget-grid">
           {budgets.map(b => (
-            <BudgetCard key={b._id} budget={b} currency={user?.currency} onEdit={openEdit} onDelete={handleDelete} />
+            <BudgetCard key={b._id} budget={b} currency={user?.currency}
+              onEdit={openEdit} onDelete={handleDelete} />
           ))}
         </div>
       )}
@@ -90,7 +116,8 @@ export default function BudgetsPage() {
           <div className="budget-form">
             <div className="field">
               <label className="label">Category</label>
-              <select className="input" value={form.category} onChange={set('category')} disabled={modal !== 'add'}>
+              <select className="input" value={form.category} onChange={set('category')}
+                disabled={modal !== 'add'}>
                 {(modal === 'add' ? availableCategories : CATEGORIES).map(c => (
                   <option key={c.value} value={c.value}>{c.emoji} {c.label}</option>
                 ))}
@@ -98,15 +125,19 @@ export default function BudgetsPage() {
             </div>
             <div className="field">
               <label className="label">Monthly limit</label>
-              <input className="input" type="number" min="1" step="0.01" placeholder="e.g. 500" value={form.limit} onChange={set('limit')} required />
+              <input className="input" type="number" min="1" step="0.01"
+                placeholder="e.g. 500" value={form.limit} onChange={set('limit')} required />
             </div>
             <div className="field">
               <label className="label">Alert at {form.alertAt}%</label>
-              <input type="range" min="10" max="100" step="5" value={form.alertAt} onChange={set('alertAt')} style={{ width: '100%', accentColor: 'var(--accent)' }} />
+              <input type="range" min="10" max="100" step="5" value={form.alertAt}
+                onChange={set('alertAt')}
+                style={{ width: '100%', accentColor: 'var(--accent)' }} />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '0.5rem', paddingTop: '1rem', borderTop: '1px solid var(--border)' }}>
+            <div className="form-actions">
               <button className="btn btn-ghost" onClick={() => setModal(null)}>Cancel</button>
-              <button className="btn btn-primary" onClick={handleSave} disabled={saving || !form.limit}>
+              <button className="btn btn-primary" onClick={handleSave}
+                disabled={saving || !form.limit}>
                 {saving ? 'Saving…' : (modal === 'add' ? 'Create' : 'Update')}
               </button>
             </div>

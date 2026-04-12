@@ -9,6 +9,7 @@
     margin-bottom: 1.5rem;
     font-size: 13.5px;
     color: var(--amber);
+    flex-wrap: wrap;
 }
 
 .alert-link {
@@ -86,4 +87,26 @@
     justify-content: space-between;
     font-size: 13px;
     margin-bottom: 5px;
+}
+
+@media (max-width: 900px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .stat-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .recent-amount {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .stat-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

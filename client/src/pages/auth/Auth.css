@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
 }
 
 .auth-wrap {
@@ -95,4 +96,11 @@
     color: var(--accent2);
     text-decoration: none;
     font-weight: 500;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 1.5rem;
+        border-radius: var(--radius);
+    }
 }

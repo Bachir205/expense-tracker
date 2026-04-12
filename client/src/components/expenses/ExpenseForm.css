@@ -50,3 +50,10 @@
     border-color: rgba(34, 211, 160, 0.3);
     color: var(--green);
 }
+
+@media (max-width: 480px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+}

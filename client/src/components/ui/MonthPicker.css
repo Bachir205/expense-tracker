@@ -2,4 +2,12 @@
     display: flex;
     align-items: center;
     gap: 6px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .month-picker select {
+    font-size: 12px;
+    padding: 0.3rem 0.5rem;
+  }
 }

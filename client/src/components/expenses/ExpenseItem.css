@@ -75,3 +75,25 @@
 .expense-item:hover .expense-actions {
     opacity: 1;
 }
+
+@media (max-width: 600px) {
+  .expense-item {
+    padding: 0.75rem 1rem;
+    gap: 8px;
+  }
+
+  .expense-actions {
+    opacity: 1;
+  }
+
+  .expense-amount {
+    min-width: 60px;
+    font-size: 13px;
+  }
+
+  .expense-cat-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+}
