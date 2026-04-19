@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { Analytics } from '@vercel/analytics/react';
 import { AuthProvider, useAuth } from './context/AuthContext.jsx';
 import { ExpenseProvider } from './context/ExpenseContext.jsx';
 import LoginPage     from './pages/auth/LoginPage.jsx';
@@ -45,6 +46,7 @@ export default function App() {
             style: { background:'var(--bg2)', color:'var(--text1)', border:'1px solid var(--border2)', fontSize:'14px' }
           }}/>
           <AppRoutes />
+          <Analytics />
         </BrowserRouter>
       </ExpenseProvider>
     </AuthProvider>
