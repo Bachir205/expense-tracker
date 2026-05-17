@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 import './Layout.css';
+import logo from "../../assets/dogalxalis-icon-dark.svg";
 
 const NAV = [
   { to: '/',          label: 'Dashboard', icon: '⊞', end: true },
@@ -23,7 +24,11 @@ export default function Layout() {
 
       <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="sidebar-brand">
-          <div className="sidebar-brand-icon">💰</div>
+          <img
+            src={logo}
+            alt="DogalXalis Logo"
+            className="sidebar-brand-icon"
+          />
           DogalXalis
         </div>
         <div className="sidebar-section">
@@ -53,8 +58,11 @@ export default function Layout() {
         {/* Mobile top bar */}
         <header className="mobile-topbar">
           <button className="hamburger" onClick={() => setSidebarOpen(o => !o)}>☰</button>
-          <div className="mobile-brand">💰 DogalXalis</div>
-          <div className="sidebar-avatar" style={{width:30,height:30,fontSize:12}}>{initials}</div>
+          <div className="mobile-brand">
+            <img src={logo} alt="DogalXalis" className="mobile-logo" />
+            DogalXalis
+          </div>
+          <div className="sidebar-avatar" style={{ width: 30, height: 30, fontSize: 12 }}>{initials}</div>
         </header>
 
         <main className="main-content">

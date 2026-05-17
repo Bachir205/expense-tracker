@@ -152,6 +152,26 @@
     background: rgba(255, 95, 126, 0.1);
 }
 
+/*icon change*/
+.sidebar-brand-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.mobile-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-right: 8px;
+}
+
+.mobile-brand {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
 /* ── Main ── */
 .main-wrapper {
     flex: 1;
