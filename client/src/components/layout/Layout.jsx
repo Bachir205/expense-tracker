@@ -24,7 +24,7 @@ export default function Layout() {
       <aside className={`sidebar ${sidebarOpen ? 'sidebar-open' : ''}`}>
         <div className="sidebar-brand">
           <div className="sidebar-brand-icon">💰</div>
-          Spendly
+          DogalXalis
         </div>
         <div className="sidebar-section">
           <div className="sidebar-section-label">Menu</div>
@@ -53,7 +53,7 @@ export default function Layout() {
         {/* Mobile top bar */}
         <header className="mobile-topbar">
           <button className="hamburger" onClick={() => setSidebarOpen(o => !o)}>☰</button>
-          <div className="mobile-brand">💰 Spendly</div>
+          <div className="mobile-brand">💰 DogalXalis</div>
           <div className="sidebar-avatar" style={{width:30,height:30,fontSize:12}}>{initials}</div>
         </header>
 

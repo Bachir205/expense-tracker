@@ -32,7 +32,7 @@ export default function RegisterPage() {
         <div className="auth-card fade-in">
           <div className="auth-logo">
             <div className="auth-logo-icon">💰</div>
-            Spendly
+            DogalXalis
           </div>
           <h2>Create account</h2>
           <p>Start taking control of your finances</p>

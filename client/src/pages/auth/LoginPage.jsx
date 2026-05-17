@@ -31,7 +31,7 @@ export default function LoginPage() {
         <div className="auth-card fade-in">
           <div className="auth-logo">
             <div className="auth-logo-icon">💰</div>
-            Spendly
+            DogalXalis
           </div>
           <h2>Welcome back</h2>
           <p>Sign in to your account to continue</p>
