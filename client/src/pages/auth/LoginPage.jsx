@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 import toast from 'react-hot-toast';
+import logo from '../../assets/dogalxalis-icon-dark.svg';
 import './Auth.css';
 
 export default function LoginPage() {
-  const [form,    setForm]    = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
-  const { login }  = useAuth();
-  const navigate   = useNavigate();
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const set = k => e => setForm(p => ({ ...p, [k]: e.target.value }));
 
@@ -30,7 +31,11 @@ export default function LoginPage() {
       <div className="auth-wrap">
         <div className="auth-card fade-in">
           <div className="auth-logo">
-            <div className="auth-logo-icon">💰</div>
+            <img
+              src={logo}
+              alt="DogalXalis Logo"
+              className="auth-logo-icon"
+            />
             DogalXalis
           </div>
           <h2>Welcome back</h2>

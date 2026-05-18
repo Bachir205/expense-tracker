@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { CURRENCIES } from '../../utils/constants.js';
 import toast from 'react-hot-toast';
+import logo from '../../assets/dogalxalis-icon-dark.svg';
 import './Auth.css';
 
 export default function RegisterPage() {
@@ -31,7 +32,11 @@ export default function RegisterPage() {
       <div className="auth-wrap">
         <div className="auth-card fade-in">
           <div className="auth-logo">
-            <div className="auth-logo-icon">💰</div>
+            <img
+              src={logo}
+              alt="DogalXalis Logo"
+              className="auth-logo-icon"
+            />
             DogalXalis
           </div>
           <h2>Create account</h2>
