@@ -154,8 +154,8 @@
 
 /*icon change*/
 .sidebar-brand-icon {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   object-fit: contain;
 }
 
@@ -169,7 +169,7 @@
 .mobile-brand {
   display: flex;
   align-items: center;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* ── Main ── */

@@ -23,19 +23,19 @@
 .auth-logo {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text1);
   margin-bottom: 1.75rem;
 }
 
 .auth-logo-icon {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 10px rgba(124, 92, 255, 0.35));
+  filter: drop-shadow(0 0 10px rgba(124, 92, 255, 0.25));
 }
 
 .auth-card h2 {
